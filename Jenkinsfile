@@ -1,8 +1,10 @@
 pipeline {
-    agent any  
-     tools {
+    agent any
+
+    tools {
         maven 'maven'
     }
+
     environment {
         SONAR_TOKEN = credentials('sonar-token')
     }
@@ -16,10 +18,9 @@ pipeline {
         }
 
         stage('SonarQube') {
-    steps {
-        sh 'mvn sonar:sonar -Dsonar.projectKey=myapp -Dsonar.host.url=http://18.225.177.48:9000 -Dsonar.login=$SONAR_TOKEN'
-    }
-}
+            steps {
+                sh 'mvn sonar:sonar -Dsonar.projectKey=myapp -Dsonar.host.url=http://18.225.177.48:9000 -Dsonar.login=$SONAR_TOKEN'
+            }
         }
 
         stage('Docker Build') {
