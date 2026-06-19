@@ -7,12 +7,6 @@ pipeline {
 
     stages {
 
-        stage('Clone') {
-            steps {
-                git 'https://github.com/MarriHemalatha/devops-poc-01.git'
-            }
-        }
-
         stage('Build') {
             steps {
                 sh 'mvn clean package'
